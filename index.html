@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
+  <title>For my dearest ian</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const page1 = document.getElementById("page1");
+      const page2 = document.getElementById("page2");
+      const page3 = document.getElementById("page3");
+      const page4 = document.getElementById("page4");
+      const page5 = document.getElementById("page5");
+      const page6 = document.getElementById("page6");
+      const page7 = document.getElementById("page7");
+      const page8 = document.getElementById("page8");
+      const page9 = document.getElementById("page9");
+
+    
+      const nextBtn = document.getElementById("nextBtn");
+      const nextBtn2 = document.getElementById("nextBtn2");
+      const dateInput = document.getElementById("dateInput");
+      const checkDateBtn = document.getElementById("checkDateBtn");
+      const nextTo5 = document.getElementById("nextTo5");
+      const nextTo6 = document.getElementById("nextTo6");
+      const nextTo7 = document.getElementById("nextTo7");
+    
+      // Page 1 → Page 2
+      nextBtn.addEventListener("click", () => {
+        page1.classList.remove("active");
+        page2.classList.add("active");
+      });
+    
+      // Page 2 → Page 3
+      nextBtn2.addEventListener("click", () => {
+        page2.classList.remove("active");
+        page3.classList.add("active");
+      });
+    
+      // Page 3 → Page 4 (2312)
+      checkDateBtn.addEventListener("click", () => {
+      const value = dateInput.value.replace(/\s/g, "");
+      const errorText = document.getElementById("errorText");
+
+      if (value === "2312") {
+      errorText.style.opacity = "0";
+      page3.classList.remove("active");
+      page4.classList.add("active");
+      } else {
+      errorText.style.opacity = "1";
+      errorText.style.transform = "translateY(0)";
+      }
+    });
+
+      nextTo5.addEventListener("click", () => {
+       page4.classList.remove("active");
+        page5.classList.add("active");
+      });
+
+      nextTo6.addEventListener("click", () => {
+       page5.classList.remove("active");
+       page6.classList.add("active");
+      });
+
+      nextTo7.addEventListener("click", () => {
+       page6.classList.remove("active");
+       page7.classList.add("active");
+      });
+
+      const restartBtn = document.getElementById("restartBtn");
+
+      restartBtn.addEventListener("click", () => {
+      // matiin semua page
+      document.querySelectorAll(".page").forEach(p => {
+      p.classList.remove("active");
+      });
+
+      // reset ke halaman pertama
+      page1.classList.add("active");
+
+      // OPTIONAL RESET (aman walau elemennya ga ada)
+      if (typeof flame !== "undefined") {
+      flame.classList.remove("off", "blowing");
+      }
+
+      if (typeof smoke !== "undefined") {
+      smoke.classList.remove("show");
+      }
+
+      if (typeof wishInput !== "undefined") {
+      wishInput.value = "";
+      }
+
+      if (typeof wishStatus !== "undefined") {
+      wishStatus.textContent = "";
+      }
+      });
+
+
+      const sendWishBtn = document.getElementById("sendWishBtn");
+      const wishInput = document.getElementById("wishInput");
+      const wishStatus = document.getElementById("wishStatus");
+
+      sendWishBtn.addEventListener("click", async () => {
+        const message = wishInput.value.trim();
+
+      if (!message) {
+        wishStatus.textContent = "udah kirim? kalau sudah terimakasih sayang";
+        return;
+      }
+
+      wishStatus.textContent = "mengirim pesan... 💌";
+
+      try {
+        const res = await fetch(
+          "https://bucin-telegram-backend.vercel.app/api/sendMessage",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+        },
+          body: JSON.stringify({
+            message: message
+        })
+      }
+    );
+
+    if (!message) {
+    wishStatus.textContent = "..";
+    return;
+  }
+
+  wishStatus.textContent = "mengirim pesan... 💌";
+
+  if (res.ok) {
+  wishStatus.textContent = "terimakasih sayang!";
+
+  setTimeout(() => {
+    page8.classList.remove("active");
+    page9.classList.add("active");
+  }, 1200);
+}
+else {
+      wishStatus.textContent = "coba kirim lagi..";
+    }
+
+  } catch (err) {
+    wishStatus.textContent = "kayaknya jaringan kamu error..";
+  }
+
+});
+
+const bgm = document.getElementById("bgm");
+
+// contoh: mulai musik saat klik Next pertama
+nextBtn.addEventListener("click", () => {
+  bgm.play().catch(() => {});
+  bgm.volume = 0.3;
+});
+
+
+
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+    const blowArea = document.getElementById("blowArea");
+    const flame = document.getElementById("flame");
+    const smoke = document.getElementById("smoke");
+
+    const page7 = document.getElementById("page7");
+    const page8 = document.getElementById("page8");
+
+    blowArea.addEventListener("click", () => {
+    flame.classList.add("blowing");
+
+    setTimeout(() => {
+      flame.classList.remove("blowing");
+      flame.classList.add("off");
+      smoke.classList.add("show");
+    }, 600);
+
+    setTimeout(() => {
+      page7.classList.remove("active");
+      page8.classList.add("active");
+    }, 2000);
+  });
+
+});
+
+    </script>
+    
+
+  <div class="phone">
+    <div class="page active" id="page1">
+      <h1>Hi !</h1>
+      <img src="assets/11.png" class="character">
+      <button id="nextBtn">Next</button>
+    </div>
+
+    <div class="page" id="page2">
+      <div class="page2-content">
+        <h1 class="title-2 animate-words">
+          <span>I</span>
+          <span>have</span>
+          <span>a</span>
+          <span>question</span>
+          <span>for</span>
+          <span>you</span>
+        </h1>
+        <img src="assets/2.png" class="character character-right">
+      </div>
+      <button id="nextBtn2">what is that?</button>
+    </div>
+
+      <div class="page" id="page3">
+        <h1 class="title-3 animate-words">
+          <span>what</span>
+          <span>is</span>
+          <span>today’s</span>
+          <span>date?</span>
+        </h1>
+  
+    <input
+      type="text"
+      id="dateInput"
+      placeholder="tanggal berapa sekarang yaa?"
+      maxlength="4"
+      class="date-input"
+      inputmode="numeric"
+
+    >
+    <p id="errorText" class="error-text">harus masukin tanggal <br> ulang tahun pacarku!</p>
+    <small class="date-hint">(ddmm)</small>
+  
+    <button id="checkDateBtn">➜</button>
+      </div>
+  
+    <div class="page" id="page4">
+        <h1 class="title-correct">
+          you’re right!<br>
+          it’s 23rd december!
+        </h1>
+      
+        <img src="assets/3.png" class="character small">
+      
+        <button id="nextTo5">Next</button>
+    </div>
+
+    <div class="page" id="page5">
+      <h1 class="title-message animate-words">
+        <span>and</span>
+        <span>someone</span>
+        <span>has</span>
+        <span>a</span><br>
+        <span>message</span>
+        <span>for</span>
+        <span>you..</span>
+      </h1>
+      <img src="assets/4.png" class="character.5">
+      <button id="nextTo6">tap to see 💌</button>
+    </div>
+
+    <div class="page" id="page6">
+      <img src="assets/lovee.png" class="letter-img">
+      <img src="assets/5.png" class="character-bottom">
+      <button id="nextTo7" class="letter-btn">
+        pencet ini sayang
+      </button>
+    </div>
+    
+    <div class="page" id="page7">
+      <h1 class="title-7">tiup lilinnya dong sayang</h1>
+    
+      <div class="candle-wrap" id="blowArea">
+        <div class="candle">
+          <div class="flame" id="flame"></div>
+          <div class="smoke" id="smoke"></div>
+        </div>
+      </div>
+    
+      <small class="hint">(tap layar untuk meniup lilin)</small>
+    </div>
+
+    <div class="page" id="page8">
+      <h1 class="title-8">lilinnya udah ditiup,<br>
+      sekarang make a wish yuk?
+      </h1>
+    
+      <textarea
+        id="wishInput"
+        placeholder="make your wish"
+        class="wish-input"
+      ></textarea>
+    
+      <button id="sendWishBtn">selesai!</button>
+    
+      <small class="hint" id="wishStatus"></small>
+    </div>
+
+    <div class="page" id="page9">
+      <h1 class="title-end">thank you!</h1>
+    
+      <p class="end-text">
+        selamat ulang tahun sayang.<br>
+        wish you all the best <3
+      </p>
+    
+      <small class="hint">i love you</small>
+    
+      <button id="restartBtn" class="restart-btn">balik</button>
+    </div>    
+    
+
+  </div>
+
+  <audio id="bgm" loop>
+    <source src="assets/nadin.mp3" type="audio/mpeg">
+  </audio>
+  
+</body>
+</html>

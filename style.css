@@ -1,0 +1,399 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;     /* 👈 TAMBAH */
+    font-family: 'Caveat Brush', cursive;
+  }
+
+  .phone {
+    width: 100%;
+    max-width: 390px;
+    min-height: calc(100vh - 40px);
+    background: linear-gradient(
+    to bottom,
+    #fff3b0 0%,
+    #ffffff 45%,
+    #ffffff 55%,
+    #fff3b0 100%
+    );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    border-radius: 20px;
+    margin: 20px auto;
+    position: relative; /* 👈 TAMBAH */
+
+  }
+
+  .character {
+  width: 260px;      /* ukuran utama */
+  max-width: 80%;
+  height: auto;
+  margin: 20px auto;
+  display: block;
+}
+
+
+  h1 {
+    font-size: 48px;
+    color: #C94A4A;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  img {
+    width: 220px;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+    animation-delay: 0.3s;
+  }
+
+  button {
+        font-family: 'Caveat Brush', cursive; /* 👈 font tombol */
+        background: #FF6F91;
+        color: white;
+        border: none;
+        padding: 14px 36px;
+        border-radius: 999px;
+        font-size: 20px; /* boleh dibesarin dikit */
+        cursor: pointer;
+      
+        opacity: 0;
+        animation:
+          fadeUp 0.8s ease forwards,
+          pulse 1.4s ease-in-out infinite;
+        animation-delay: 0.6s, 1.4s;
+      
+  }
+
+  button:active {
+    transform: scale(0.95);
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+
+  }
+
+  .page {
+  position: absolute;   /* 👈 PENTING */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  }
+
+
+  .page.active {
+  display: flex;
+  }
+
+  .title-2 {
+  font-size: 34px;
+  line-height: 1.1;
+  text-align: center;   /* 👈 penting */
+  max-width: 50%;  /* teks tetap “cukup lebar”, tapi ada ruang kiri */
+  margin-top: 10px; /* sedikit jarak dari atas container */
+  position: relative; /* Harus ada agar 'top' bekerja */
+  top: 80px;
+  margin-left: 40px;
+  }
+
+
+  .character-right {
+  margin-left: 160px;   /* geser ke kanan */
+  }
+
+  .animate-words span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: wordFadeUp 0.6s ease forwards;
+}
+
+/* delay biar muncul satu-satu */
+  .animate-words span:nth-child(1) { animation-delay: 0.15s; }
+  .animate-words span:nth-child(2) { animation-delay: 0.25s; }
+  .animate-words span:nth-child(3) { animation-delay: 0.35s; }
+  .animate-words span:nth-child(4) { animation-delay: 0.45s; }
+  .animate-words span:nth-child(5) { animation-delay: 0.55s; }
+  .animate-words span:nth-child(6) { animation-delay: 0.66s; }
+
+  @keyframes wordFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  }
+
+  .title-3 {
+  font-size: 32px;
+  color: #C94A4A;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.date-input {
+  width: 200px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  border: 2px solid #C94A4A;
+  font-family: 'Caveat Brush', cursive;
+  font-size: 18px;
+  text-align: center;
+  outline: none;
+  margin-bottom: 6px;
+}
+
+.date-hint {
+    color: #C94A4A;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.error-text {
+    color: #C94A4A;
+    font-size: 18px;
+    margin-top: 8px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: all 0.3s ease;
+  }
+
+  .character.small {
+    width: 400px;   /* 🔼 gedein di sini */
+    margin-bottom: 20px;
+  }
+  
+  .title-correct {
+    font-size: 28px;   /* 🔽 lebih kecil */
+    position: relative; /* Harus ada agar 'top' bekerja */
+    top: 60px;
+  }
+  
+  .title-message {
+    font-size: 30px;
+    color: #C94A4A;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  #page6 {
+    position: relative;
+    padding: 20px;
+  }
+  
+  /* surat */
+  .letter-img {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    display: block;
+    transform: rotate(-2deg);
+  }
+  
+  /* karakter bawah kiri */
+  .character-bottom {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 200px;
+  }
+  
+  /* tombol bawah kanan */
+  .letter-btn {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    background: #B44A4A;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-family: 'Caveat Brush', cursive;
+  }
+  
+  .candle-wrap {
+    margin: 40px 0;
+  }
+  
+  /* batang lilin */
+  .candle {
+    width: 24px;
+    height: 80px;
+    background: #ffd966;
+    border-radius: 6px;
+    position: relative;
+    margin: 0 auto;
+  }
+  
+  /* api */
+  .flame {
+    position: absolute;
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 22px;
+    background: radial-gradient(circle at 50% 30%, #fff, #ff9f1c, #ff5e00);
+    border-radius: 50%;
+    animation: flicker 0.6s infinite;
+  }
+  
+  /* goyang kenceng pas ditiup */
+  .flame.blowing {
+    animation: shake 0.3s infinite;
+  }
+  
+  /* mati */
+  .flame.off {
+    animation: blowOut 0.6s forwards;
+  }
+  
+  @keyframes flicker {
+    0% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.1); }
+    100% { transform: translateX(-50%) scale(1); }
+  }
+  
+  @keyframes shake {
+    0% { transform: translateX(-50%) rotate(-8deg); }
+    50% { transform: translateX(-50%) rotate(8deg); }
+    100% { transform: translateX(-50%) rotate(-8deg); }
+  }
+  
+  @keyframes blowOut {
+    to {
+      opacity: 0;
+      transform: translateX(-50%) scale(0);
+    }
+  }
+
+  .smoke {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: rgba(200, 200, 200, 0.6);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  
+  .smoke.show {
+    animation: smokeUp 1.5s ease forwards;
+  }
+  
+  @keyframes smokeUp {
+    from {
+      opacity: 0.6;
+      transform: translateX(-50%) translateY(0) scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-50%) translateY(-30px) scale(1.5);
+    }
+  }
+
+  .hint {
+    color: #C94A4A;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    opacity: 0.6;
+  }
+
+  .wish-input {
+    width: 80%;
+    max-width: 280px;
+    min-height: 100px;
+    padding: 12px;
+    border-radius: 12px;
+    border: 2px solid #FF6F91;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    resize: none;
+    outline: none;
+    margin: 20px 0;
+  }
+  
+  .wish-input:focus {
+    border-color: #C94A4A;
+  }
+  
+  .title-8 {
+    font-size: 28px;
+    color: #C94A4A;
+  }
+  
+  #wishStatus {
+    margin-top: 10px;
+  }
+
+  .title-7 {
+    font-size: 30px;
+    color: #C94A4A;
+  }
+  
+  .restart-btn {
+    margin-top: 24px;
+    background: transparent;
+    border: 2px solid #FF6F91;
+    color: #FF6F91;
+    padding: 10px 28px;
+    border-radius: 999px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .restart-btn:hover {
+    background: #FF6F91;
+    color: white;
+  }
+
+  .title-end {
+    font-size: 32px;
+    color: #C94A4A;
+    margin-bottom: 12px;
+    animation: fadeUp 0.8s ease forwards;
+  }
+  
+  .end-text {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    text-align: center;
+    max-width: 260px;
+    margin-bottom: 20px;
+    animation: fadeUp 0.8s ease forwards;
+    animation-delay: 0.2s;
+  }
+
